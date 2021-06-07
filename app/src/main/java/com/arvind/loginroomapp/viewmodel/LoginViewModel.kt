@@ -1,0 +1,37 @@
+package com.arvind.loginroomapp.viewmodel
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.arvind.loginroomapp.storage.datastore.UIModeDataStore
+import com.arvind.loginroomapp.utils.DetailState
+import com.arvind.notewakeup.utils.ViewState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+class LoginViewModel @Inject constructor(application: Application) :
+    AndroidViewModel(application) {
+
+
+    private val _uiState = MutableStateFlow<ViewState>(ViewState.Loading)
+    private val _detailState = MutableStateFlow<DetailState>(DetailState.Loading)
+
+    // UI collect from this stateFlow to get the state updates
+    val uiState: StateFlow<ViewState> = _uiState
+    val detailState: StateFlow<DetailState> = _detailState
+
+    private val uiModeDataStore = UIModeDataStore(application)
+
+    // get ui mode
+    val getUIMode = uiModeDataStore.uiMode
+
+    // save ui mode
+    fun saveToDataStore(isNightMode: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            uiModeDataStore.saveToDataStore(isNightMode)
+        }
+    }
+}

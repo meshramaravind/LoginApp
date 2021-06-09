@@ -3,16 +3,21 @@ package com.arvind.loginroomapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.repository.LoginStaffRepository
 import com.arvind.loginroomapp.storage.datastore.UIModeDataStore
 import com.arvind.loginroomapp.utils.DetailState
-import com.arvind.notewakeup.utils.ViewState
+import com.arvind.loginroomapp.utils.ViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class LoginViewModel @Inject constructor(application: Application) :
+class LoginViewModel @Inject constructor(
+    application: Application,
+    private val loginStaffRepository: LoginStaffRepository
+) :
     AndroidViewModel(application) {
 
 
@@ -34,4 +39,35 @@ class LoginViewModel @Inject constructor(application: Application) :
             uiModeDataStore.saveToDataStore(isNightMode)
         }
     }
+
+    //insert login staff
+    fun insertstaff(loginStaffUser: LoginStaffUser) = viewModelScope.launch {
+        loginStaffRepository.insert(loginStaffUser)
+    }
+
+    //update note
+    fun updateloginstaff(loginStaffUser: LoginStaffUser) = viewModelScope.launch {
+        loginStaffRepository.update(loginStaffUser)
+    }
+
+    //delete note
+    fun deleteloginstaff(loginStaffUser: LoginStaffUser) = viewModelScope.launch {
+        loginStaffRepository.delete(loginStaffUser)
+    }
+
+    //get all note
+    fun getAllloginstaff() = loginStaffRepository.getAllLlginstaff()
+
+//    fun getAllLogin() = viewModelScope.launch {
+//        loginStaffRepository.getAllLlginstaff().collect { result ->
+//
+//            if (result.isNullOrEmpty()) {
+//                _uiState.value = ViewState.Empty
+//            } else {
+//                _uiState.value = ViewState.Success(result)
+//            }
+//        }
+//    }
+
+
 }

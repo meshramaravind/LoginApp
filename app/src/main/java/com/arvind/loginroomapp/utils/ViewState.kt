@@ -1,10 +1,10 @@
-package com.arvind.notewakeup.utils
+package com.arvind.loginroomapp.utils
 
-import com.arvind.loginroomapp.model.StaffUser
+import com.arvind.loginroomapp.model.LoginStaffUser
 
 sealed class ViewState {
     object Loading : ViewState()
     object Empty : ViewState()
-    data class Success(val staffUser: List<StaffUser>) : ViewState()
+    data class Success(val loginStaffUser: List<LoginStaffUser>) : ViewState()
     data class Error(val exception: Throwable) : ViewState()
 }

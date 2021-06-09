@@ -6,7 +6,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.main.MainActivity">
+        tools:context=".view.login.LoginFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:gravity="start"
-                    android:text="@string/logstaff"
+                    android:text="Welcome Arvind...!"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp"
                     android:visibility="gone" />

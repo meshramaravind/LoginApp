@@ -11,7 +11,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/colorbackground"
             tools:context=".view.MainActivity">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -127,7 +127,7 @@
                 android:padding="@dimen/_9sdp"
                 android:text="@string/log_in"
                 android:textSize="@dimen/_12sdp"
-                app:backgroundTint="@color/blue_500"
+                app:backgroundTint="@color/colorbgpslah"
                 app:cornerRadius="@dimen/_3sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +157,7 @@
                 android:fontFamily="@font/open_sans_bold"
                 android:padding="@dimen/_2sdp"
                 android:text="@string/forgot_password"
-                android:textColor="@color/colorgray"
+                android:textColor="@color/colorgraytext"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -169,7 +169,7 @@
                 android:id="@+id/layout_bottom_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorgray"
+                android:background="@color/colorpurpulewhite"
                 android:padding="@dimen/_2sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -185,7 +185,7 @@
                     android:text="@string/new_user_create_account"
                     android:textAllCaps="false"
                     android:textSize="@dimen/_12sdp"
-                    app:backgroundTint="@color/coloryellowdark"
+                    app:backgroundTint="@color/colorbgpslah"
                     app:cornerRadius="@dimen/_3sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintRight_toRightOf="parent"

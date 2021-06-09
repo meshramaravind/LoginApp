@@ -9,6 +9,7 @@
         android:background="@color/colorbackground"
         tools:context=".view.dashboard.DashboardFragment">
 
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/main_dashboard_scrollview"
             android:layout_width="match_parent"
@@ -58,11 +59,13 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_weight="1"
+                            android:autofillHints="@string/search"
                             android:background="@null"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
                             android:fontFamily="@font/open_sans_regular"
                             android:hint="@string/search"
+                            android:inputType="textFilter"
                             android:textColor="@color/colortext"
                             android:textColorHint="@color/colortext"
                             android:textSize="@dimen/_13sdp" />
@@ -77,18 +80,18 @@
                     android:id="@+id/rv_staffdashboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="644dp"
                     android:clipToPadding="false"
-                    android:visibility="gone"
-                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layoutHeader_dashboard"
-                    app:spanCount="2"
-                    tools:listitem="@layout/items_note" />
+                    tools:listitem="@layout/items_staff" />
 
                 <include
-                    android:id="@+id/layout_empty_staff_dashboard"
+                    android:id="@+id/emptyStateLayout"
                     layout="@layout/content_layout_empty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,7 +105,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
-
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/btn_add_newstaff"

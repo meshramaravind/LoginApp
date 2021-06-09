@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorbackground"
         tools:context=".view.edit.StaffEditFragment">
 
         <include
@@ -28,7 +29,7 @@
             android:padding="@dimen/_9sdp"
             android:text="@string/save"
             android:textSize="@dimen/_12sdp"
-            app:backgroundTint="@color/blue_500"
+            app:backgroundTint="@color/colorbgpslah"
             app:cornerRadius="@dimen/_3sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

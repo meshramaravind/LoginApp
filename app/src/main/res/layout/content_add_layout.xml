@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_name_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:hint="@string/name"
         app:layout_constraintTop_toTopOf="parent">
@@ -48,23 +47,24 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_designation_add"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:background="@drawable/background_box"
         android:hint="@string/designation"
         app:layout_constraintTop_toBottomOf="@+id/tverror_name_add">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_designation_add"
+        <AutoCompleteTextView
+            android:id="@+id/et_deignationType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_box"
+            android:background="@null"
             android:fontFamily="@font/open_sans_regular"
-            android:inputType="textPassword"
-            android:text="" />
+            android:inputType="none"
+            android:labelFor="@id/et_deignationType" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,11 +94,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:background="@drawable/background_box"
         android:hint="@string/salary"
-        app:layout_constraintTop_toBottomOf="@+id/tverror_designation_add">
+        app:layout_constraintTop_toBottomOf="@+id/tverror_designation_add"
+        app:prefixText="@string/text_rupees">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_salary_add"
@@ -106,7 +107,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_box"
             android:fontFamily="@font/open_sans_regular"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:text="" />
 
     </com.google.android.material.textfield.TextInputLayout>

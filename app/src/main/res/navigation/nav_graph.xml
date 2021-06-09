@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/loginStaffFragment">
 
     <fragment
         android:id="@+id/dashboardFragment"
@@ -11,21 +11,6 @@
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard">
 
-        <action
-            android:id="@+id/action_dashboardFragment_to_loginStaffFragment"
-            app:destination="@id/loginStaffFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-
-        <action
-            android:id="@+id/action_dashboardFragment_to_registerStaffFragment"
-            app:destination="@id/registerStaffFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/action_dashboardFragment_to_addStaffFragment"
@@ -48,14 +33,33 @@
     <fragment
         android:id="@+id/loginStaffFragment"
         android:name="com.arvind.loginroomapp.view.login.LoginFragment"
-        android:label="Login"
+        android:label=""
         tools:layout="@layout/fragment_login">
 
         <action
-            android:id="@+id/action_addSatffFragment_to_dashboardFragment"
+            android:id="@+id/action_loginStaffFragment_to_registerStaffFragment"
+            app:destination="@id/registerStaffFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_loginStaffFragment_to_forgotpasswordStaffFragment"
+            app:destination="@id/forgotpasswordStaffFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_loginSatffFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
-            app:popUpTo="@id/loginStaffFragment"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
     <fragment
@@ -65,17 +69,78 @@
         tools:layout="@layout/fragment_register">
 
         <action
+            android:id="@+id/action_registerStaffFragment_to_loginStaffFragment"
+            app:destination="@id/loginStaffFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
             android:id="@+id/action_registerStaffFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/registerStaffFragment"
             app:popUpToInclusive="true" />
 
     </fragment>
 
+
+    <fragment
+        android:id="@+id/forgotpasswordStaffFragment"
+        android:name="com.arvind.loginroomapp.view.password.ForgotPasswordFragment"
+        android:label="Forgot Password"
+        tools:layout="@layout/fragment_forgot_password">
+
+        <action
+            android:id="@+id/action_forgotpasswordStaffFragment_to_changepasswordStaffFragment"
+            app:destination="@id/changepasswordStaffFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_forgotpasswordStaffFragment_to_loginStaffFragment"
+            app:destination="@id/loginStaffFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/changepasswordStaffFragment"
+        android:name="com.arvind.loginroomapp.view.password.ChangePasswordFragment"
+        android:label="Change Password"
+        tools:layout="@layout/fragment_change_password">
+
+        <action
+            android:id="@+id/action_changepasswordStaffFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/changepasswordStaffFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_changepasswordStaffFragment_to_loginStaffFragment"
+            app:destination="@id/loginStaffFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+
     <fragment
         android:id="@+id/addStaffFragment"
         android:name="com.arvind.loginroomapp.view.add.AddFragment"
-        android:label="@string/add"
+        android:label="Add"
         tools:layout="@layout/fragment_add_staff">
         <action
             android:id="@+id/action_addStaffFragment_to_dashboardFragment"
@@ -91,7 +156,7 @@
         tools:layout="@layout/fragment_staff_details">
         <argument
             android:name="staff"
-            app:argType="com.arvind.loginroomapp.model.StaffUser" />
+            app:argType="com.arvind.loginroomapp.model.LoginStaffUser" />
         <action
             android:id="@+id/action_staffDetailsFragment_to_editStaffFragment"
             app:destination="@id/editStaffFragment"
@@ -108,7 +173,7 @@
         tools:layout="@layout/fragment_edit_staff">
         <argument
             android:name="staff"
-            app:argType="com.arvind.loginroomapp.model.StaffUser" />
+            app:argType="com.arvind.loginroomapp.model.LoginStaffUser" />
         <action
             android:id="@+id/edit_to_details"
             app:destination="@id/detailsStaffFragment" />

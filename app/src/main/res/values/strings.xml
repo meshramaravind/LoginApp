@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LoginStaffApp</string>
     <string name="add">New Add</string>
-    <string name="no_data_found">No Data Found!</string>
+    <string name="no_data_found">No Data Found…!</string>
     <string name="search">Search…</string>
     <string name="logo">LOGO</string>
     <string name="text_ui_mode">UI Mode</string>
@@ -31,5 +31,16 @@
     <string name="created_at">Created At</string>
     <string name="edit">edit</string>
     <string name="total_salary">Total Salary</string>
-    <string name="logstaff">LogStaff</string>
+    <string name="logstaff">LoginStaff</string>
+    <string name="register">Register</string>
+    <string name="submit">Submit</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="back_to">back to</string>
+    <string name="login">Login</string>
+    <string name="tap_add_new_note">Tap the Add button to create a new</string>
+    <string name="textcontinue">Continue</string>
+    <string name="success_addstaff_saved">Staff saved successfully</string>
+    <string name="success_addstaff_delete">Staff deleted successfully!</string>
+    <string name="success_addstaff_update">Staff update successfully!</string>
+    <string name="text_rupees">₹</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.arvind.loginroomapp.view.register
+package com.arvind.loginroomapp.view.password
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.arvind.loginroomapp.databinding.FragmentRegisterBinding
+import com.arvind.loginroomapp.databinding.FragmentForgotPasswordBinding
 import com.arvind.loginroomapp.view.base.BaseFragment
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>() {
+class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, LoginViewModel>() {
+
     override val viewModel: LoginViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -21,9 +22,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
     }
 
     private fun doinits() = with(binding) {
-        buttonLoginView.setOnClickListener {
+        buttonSubmit.setOnClickListener {
             val direction =
-                RegisterFragmentDirections.actionRegisterStaffFragmentToLoginStaffFragment()
+                ForgotPasswordFragmentDirections.actionForgotpasswordStaffFragmentToChangepasswordStaffFragment()
             it.findNavController().navigate(direction)
         }
     }
@@ -31,5 +32,5 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentRegisterBinding.inflate(inflater, container, false)
+    ) = FragmentForgotPasswordBinding.inflate(inflater, container, false)
 }

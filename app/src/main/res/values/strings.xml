@@ -9,9 +9,9 @@
     <string name="log_in">Log In</string>
     <string name="email_or_phone_number">Email</string>
     <string name="password">Password</string>
-    <string name="password_is_required">password is required</string>
+    <string name="password_is_required">Password is required</string>
     <string name="new_user_create_account">New User? Create Account</string>
-    <string name="email_is_required">email is required</string>
+    <string name="email_is_required">Email is required</string>
     <string name="forgot_password">Forgot Password?</string>
 
     <string name="title_activity_second_login">SecondLoginActivity</string>
@@ -43,4 +43,6 @@
     <string name="success_addstaff_delete">Staff deleted successfully!</string>
     <string name="success_addstaff_update">Staff update successfully!</string>
     <string name="text_rupees">₹</string>
+    <string name="name_is_required">Name is required</string>
+    <string name="confirm_password_is_required">Confirm Password is required</string>
 </resources>

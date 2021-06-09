@@ -49,7 +49,6 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
                 binding.addStaffLayout.apply {
                     val (name, designationType, salary) = getStaffContent()
 
-
                     if (!validateUserName() or !validateUserdesignationType() or !validateUserSalary()) {
                         return@apply
                     } else {

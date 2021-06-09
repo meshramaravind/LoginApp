@@ -37,22 +37,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     private fun doinits() = with(binding) {
         gettextwathcerlogin()
         buttonLogin.setOnClickListener {
-
             if (!validateUserEmail() or !validateUserPassword()) {
                 return@setOnClickListener
             } else {
-                viewModel.insertstaff(getLoginContent()).run {
-                    toast(getString(R.string.success_addstaff_saved))
-                    findNavController().navigate(
-                        R.id.action_addStaffFragment_to_dashboardFragment
-                    )
-                }
+                val direction =
+                    LoginFragmentDirections.actionLoginSatffFragmentToDashboardFragment()
+                it.findNavController().navigate(direction)
             }
 
-
-            val direction = LoginFragmentDirections
-                .actionLoginSatffFragmentToDashboardFragment()
-            it.findNavController().navigate(direction)
         }
 
         buttonRegister.setOnClickListener {

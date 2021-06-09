@@ -62,7 +62,7 @@
                 android:gravity="start"
                 android:padding="@dimen/_2sdp"
                 android:paddingStart="@dimen/_11sdp"
-                android:text="@string/this_field_is_required"
+                android:text="@string/name_is_required"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_10sdp"
                 android:visibility="gone"
@@ -72,7 +72,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_emailormobile_view"
+                android:id="@+id/til_email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
@@ -82,7 +82,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tverror_name_register">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_email_login"
+                    android:id="@+id/ed_email_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_box"
@@ -93,7 +93,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tverror_email_viewlogin"
+                android:id="@+id/tverror_email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
@@ -104,16 +104,16 @@
                 android:gravity="start"
                 android:padding="@dimen/_2sdp"
                 android:paddingStart="@dimen/_11sdp"
-                android:text="@string/this_field_is_required"
+                android:text="@string/email_is_required"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_10sdp"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@+id/til_emailormobile_view">
+                app:layout_constraintTop_toBottomOf="@+id/til_email_register">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_password_viewlogin"
+                android:id="@+id/til_password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
@@ -121,10 +121,10 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:background="@drawable/background_box"
                 android:hint="@string/password"
-                app:layout_constraintTop_toBottomOf="@+id/tverror_email_viewlogin">
+                app:layout_constraintTop_toBottomOf="@+id/tverror_email_register">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_password_login"
+                    android:id="@+id/ed_password_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_box"
@@ -135,7 +135,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tverror_password_viewlogin"
+                android:id="@+id/tverror_password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
@@ -146,11 +146,11 @@
                 android:gravity="start"
                 android:padding="@dimen/_2sdp"
                 android:paddingStart="@dimen/_11sdp"
-                android:text="@string/this_field_is_required"
+                android:text="@string/password_is_required"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_10sdp"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@+id/til_password_viewlogin">
+                app:layout_constraintTop_toBottomOf="@+id/til_password_register">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
@@ -172,12 +172,12 @@
                 app:cornerRadius="@dimen/_3sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tverror_password_viewlogin">
+                app:layout_constraintTop_toBottomOf="@+id/tverror_password_register">
 
             </com.google.android.material.button.MaterialButton>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_bottom_login"
+                android:id="@+id/layout_bottom_register_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorpurpulewhite"
@@ -188,7 +188,7 @@
                 app:layout_constraintVertical_bias="1">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_login_view"
+                    android:id="@+id/button_loginbackto_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_semibold"

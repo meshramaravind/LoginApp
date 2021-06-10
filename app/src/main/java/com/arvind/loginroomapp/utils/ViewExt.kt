@@ -1,4 +1,4 @@
-package com.arvind.notewakeup.utils
+package com.arvind.loginroomapp.utils
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -14,4 +14,17 @@ fun View.show() {
 
 fun View.hide() {
     visibility = View.GONE
+}
+
+// parse string to double
+fun parseDouble(value: String?): Double {
+    return if (value == null || value.isEmpty()) Double.NaN else value.toDouble()
+}
+
+// indian rupee converter
+fun indianRupee(amount: Double): String {
+    val format: NumberFormat = NumberFormat.getCurrencyInstance()
+    format.maximumFractionDigits = 0
+    format.currency = Currency.getInstance("INR")
+    return format.format(amount)
 }

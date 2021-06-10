@@ -23,71 +23,82 @@
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/layoutHeader_dashboard"
+                <include
+                    android:id="@+id/total_balance_view"
+                    layout="@layout/layout_total_staff"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    app:cardBackgroundColor="@color/colorcardview"
-                    app:cardCornerRadius="@dimen/_20sdp"
-                    app:cardElevation="0dp"
-                    app:cardMaxElevation="0dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_5sdp">
-
-                        <ImageView
-                            android:id="@+id/imageSearch"
-                            android:layout_width="@dimen/_24sdp"
-                            android:layout_height="@dimen/_24sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:contentDescription="@string/app_name"
-                            android:padding="@dimen/_2sdp"
-                            android:src="@drawable/ic_baseline_search_24"
-                            app:tint="@color/black" />
-
-                        <EditText
-                            android:id="@+id/ed_inputSearch_dashboard"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/_8sdp"
-                            android:layout_marginEnd="@dimen/_8sdp"
-                            android:layout_weight="1"
-                            android:autofillHints="@string/search"
-                            android:background="@null"
-                            android:focusable="false"
-                            android:focusableInTouchMode="false"
-                            android:fontFamily="@font/open_sans_regular"
-                            android:hint="@string/search"
-                            android:inputType="textFilter"
-                            android:textColor="@color/colortext"
-                            android:textColorHint="@color/colortext"
-                            android:textSize="@dimen/_13sdp" />
+                    android:layout_height="@dimen/_110sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-                    </LinearLayout>
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/layoutHeader_dashboard"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="@dimen/_10sdp"-->
+<!--                    app:cardBackgroundColor="@color/colorcardview"-->
+<!--                    app:cardCornerRadius="@dimen/_20sdp"-->
+<!--                    app:cardElevation="0dp"-->
+<!--                    app:cardMaxElevation="0dp"-->
+<!--                    app:cardPreventCornerOverlap="false"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
 
-                </com.google.android.material.card.MaterialCardView>
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="@dimen/_5sdp">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageSearch"-->
+<!--                            android:layout_width="@dimen/_24sdp"-->
+<!--                            android:layout_height="@dimen/_24sdp"-->
+<!--                            android:layout_marginStart="@dimen/_10sdp"-->
+<!--                            android:contentDescription="@string/app_name"-->
+<!--                            android:padding="@dimen/_2sdp"-->
+<!--                            android:src="@drawable/ic_baseline_search_24"-->
+<!--                            app:tint="@color/black" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ed_inputSearch_dashboard"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_marginStart="@dimen/_8sdp"-->
+<!--                            android:layout_marginEnd="@dimen/_8sdp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:autofillHints="@string/search"-->
+<!--                            android:background="@null"-->
+<!--                            android:focusable="false"-->
+<!--                            android:focusableInTouchMode="false"-->
+<!--                            android:fontFamily="@font/open_sans_regular"-->
+<!--                            android:hint="@string/search"-->
+<!--                            android:inputType="textFilter"-->
+<!--                            android:textColor="@color/colortext"-->
+<!--                            android:textColorHint="@color/colortext"-->
+<!--                            android:textSize="@dimen/_13sdp" />-->
+
+
+<!--                    </LinearLayout>-->
+
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_staffdashboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="644dp"
                     android:clipToPadding="false"
                     android:visibility="visible"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutHeader_dashboard"
+                    app:layout_constraintTop_toBottomOf="@+id/total_balance_view"
                     tools:listitem="@layout/items_staff" />
 
                 <include

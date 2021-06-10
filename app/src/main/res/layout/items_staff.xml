@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="loginstaff"
             type="com.arvind.loginroomapp.model.LoginStaffUser" />
     </data>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/loginstaff_CardView"
         android:layout_width="match_parent"
@@ -42,10 +44,12 @@
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:fontFamily="@font/open_sans_semibold"
+                android:text="@{loginstaff.name}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@color/coloritemtext"
                 app:layout_constraintStart_toEndOf="@id/loginstaff_IconImageview"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Brochure Design" />
+                tools:text="Arvind Meshram" />
 
             <TextView
                 android:id="@+id/tv_designationType"
@@ -54,7 +58,9 @@
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:fontFamily="@font/open_sans_regular"
+                android:text="@{loginstaff.designationType}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="@color/coloritemtext"
                 app:layout_constraintStart_toEndOf="@id/loginstaff_IconImageview"
                 app:layout_constraintTop_toBottomOf="@id/tv_Name"
                 tools:text="Android Developer" />
@@ -63,15 +69,16 @@
                 android:id="@+id/tv_Amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:fontFamily="@font/open_sans_semibold"
+                android:text=""
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="@android:color/holo_red_light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="$200" />
+                tools:text="$2000" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

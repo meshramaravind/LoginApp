@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arvind.loginroomapp.databinding.ItemsStaffBinding
 import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.utils.indianRupee
 
 class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StaffViewHolder {
@@ -23,13 +24,14 @@ class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHold
     }
 
 
-    inner class StaffViewHolder(val itemsStaffBinding: ItemsStaffBinding) :
+    inner class StaffViewHolder(private val itemsStaffBinding: ItemsStaffBinding) :
         RecyclerView.ViewHolder(itemsStaffBinding.root) {
         fun bind(loginStaffUser: LoginStaffUser) {
-
             itemsStaffBinding.apply {
                 itemsStaffBinding.loginstaff = loginStaffUser
                 itemsStaffBinding.executePendingBindings()
+
+                tvAmount.text = "- ".plus(indianRupee(loginStaffUser.salary))
             }
         }
 

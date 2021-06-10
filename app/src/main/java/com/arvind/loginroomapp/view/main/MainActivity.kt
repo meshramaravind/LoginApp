@@ -11,9 +11,9 @@ import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.ActivityMainBinding
 import com.arvind.loginroomapp.repository.LoginStaffRepository
 import com.arvind.loginroomapp.storage.db.LoginAppDatabadse
+import com.arvind.loginroomapp.utils.hide
+import com.arvind.loginroomapp.utils.show
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
-import com.arvind.notewakeup.utils.hide
-import com.arvind.notewakeup.utils.show
 import com.arvind.notewakeup.utils.viewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 

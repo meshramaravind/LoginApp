@@ -1,22 +1,30 @@
 package com.arvind.loginroomapp.view.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.adapter.CustomStaffAdapter
 import com.arvind.loginroomapp.databinding.FragmentDashboardBinding
 import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.utils.ViewState
+import com.arvind.loginroomapp.utils.hide
+import com.arvind.loginroomapp.utils.indianRupee
+import com.arvind.loginroomapp.utils.show
 import com.arvind.loginroomapp.view.base.BaseFragment
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
-import com.arvind.notewakeup.utils.hide
-import com.arvind.notewakeup.utils.show
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.layout_total_staff.*
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint
@@ -33,6 +41,65 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
         super.onViewCreated(view, savedInstanceState)
         setupRv()
         doinits()
+        swipeToDelete()
+    }
+
+    private fun onTotalStaffSalaryLoaded(loginStaffUser: List<LoginStaffUser>) = with(binding) {
+
+        val totalQuantity: Double = loginStaffUser.map { it.salary }.sum()
+
+        tv_total_balance.text = indianRupee(totalQuantity)
+    }
+
+    private fun swipeToDelete() {
+        // init item touch callback for swipe action
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder,
+            ): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                // get item position & delete notes
+                val position = viewHolder.adapterPosition
+                val userdata = customStaffAdapter.differ.currentList[position]
+                val loginstaffItem = LoginStaffUser(
+                    userdata.name,
+                    userdata.designationType,
+                    userdata.salary,
+                    "0",
+                    "0",
+                    "0",
+                    userdata.createdAt,
+                    userdata.id
+                )
+                viewModel.deleteloginstaff(loginstaffItem)
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.success_addstaff_delete),
+                    Snackbar.LENGTH_LONG
+                )
+                    .apply {
+                        setAction("Undo") {
+                            viewModel.insertstaff(
+                                loginstaffItem
+                            )
+                        }
+                        show()
+                    }
+            }
+        }
+
+        // attach swipe callback to rv
+        ItemTouchHelper(itemTouchHelperCallback).apply {
+            attachToRecyclerView(binding.rvStaffdashboard)
+        }
     }
 
     private fun setupRv() {
@@ -44,6 +111,8 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
             viewModel.getAllloginstaff().observe(viewLifecycleOwner, { login ->
                 customStaffAdapter.differ.submitList(login)
                 updateUI(login)
+
+                onTotalStaffSalaryLoaded(login)
 
             })
         }
@@ -84,6 +153,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
         inflater.inflate(R.menu.main_menu, menu)
         lifecycleScope.launchWhenStarted {
             val isChecked = viewModel.getUIMode.first()

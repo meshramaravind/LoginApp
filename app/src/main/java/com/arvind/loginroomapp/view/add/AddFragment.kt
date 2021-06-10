@@ -14,13 +14,13 @@ import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentAddStaffBinding
 import com.arvind.loginroomapp.model.LoginStaffUser
 import com.arvind.loginroomapp.utils.Constants
+import com.arvind.loginroomapp.utils.parseDouble
 import com.arvind.loginroomapp.view.base.BaseFragment
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.content_add_layout.*
 import kotlinx.android.synthetic.main.content_add_layout.view.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import java.lang.Double.parseDouble
 
 
 @AndroidEntryPoint
@@ -59,6 +59,7 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
                             )
                         }
                     }
+
                 }
             }
 
@@ -78,7 +79,6 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
         val salary = parseDouble(binding.addStaffLayout.ed_salary_add.text.toString())
         if (salary.isNaN()) {
             tverror_salary_add.error = tverror_salary_add.error
-            tverror_salary_add.setTextColor(Color.RED)
             tverror_salary_add.visibility = View.VISIBLE
 
             return false
@@ -96,7 +96,6 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
 
         if (et_deignationType.text.toString().isEmpty()) {
             tverror_designation_add.error = tverror_designation_add.error
-            tverror_designation_add.setTextColor(Color.RED)
             tverror_designation_add.visibility = View.VISIBLE
 
             return false
@@ -114,7 +113,6 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
     private fun validateUserName(): Boolean {
         if (ed_name_add.text.toString().isEmpty()) {
             tverror_name_add.error = tverror_name_add.error
-            tverror_name_add.setTextColor(Color.RED)
             tverror_name_add.visibility = View.VISIBLE
 
             return false
@@ -154,7 +152,6 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
         }
 
         override fun afterTextChanged(s: Editable) {
-//            val salary = parseDouble(binding.addStaffLayout.ed_salary_add.text.toString())
             validateUserSalary()
         }
     }

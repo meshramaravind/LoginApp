@@ -22,4 +22,5 @@
     <color name="colorgreenwhite">#D0F5F6</color>
     <color name="colorgraytext">#FFFFFFFF</color>
     <color name="colorbox">#f9f9f9</color>
+    <color name="coloritemtext">#FFFFFFFF</color>
 </resources>

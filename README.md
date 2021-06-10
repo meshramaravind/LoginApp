@@ -1,5 +1,5 @@
 # LoginApp
-Simple login app with mvvm clean architecture
+Simple login Room Database app with mvvm clean architecture
 
 Here i demonstrate the use of Modern Android development tools - 
 (Kotlin, Architecture Components, 

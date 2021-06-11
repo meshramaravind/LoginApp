@@ -14,12 +14,12 @@
             android:layout_height="match_parent">
 
             <include
-                android:id="@+id/staff_Details"
+                android:id="@+id/layout_staff_Details"
                 layout="@layout/content_layout_details" />
 
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/edit_staff"
+                android:id="@+id/button_staffedit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
@@ -27,7 +27,7 @@
                 android:contentDescription="@string/app_name"
                 android:text="@string/edit"
                 android:textColor="@color/white"
-                app:backgroundTint="@color/blue_500"
+                app:backgroundTint="@color/colorbgpslah"
                 app:borderWidth="0dp"
                 app:icon="@drawable/ic_baseline_edit_24"
                 app:iconTint="@color/white" />

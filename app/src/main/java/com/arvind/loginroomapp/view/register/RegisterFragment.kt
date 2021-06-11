@@ -49,9 +49,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
         }
 
         buttonLoginbacktoRegister.setOnClickListener {
-            val direction =
-                RegisterFragmentDirections.actionRegisterStaffFragmentToLoginStaffFragment()
-            it.findNavController().navigate(direction)
+            findNavController().popBackStack()
         }
     }
 
@@ -180,7 +178,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
         val email = it.ed_email_register.text.toString()
         val password = it.ed_password_register.text.toString()
 
-        return LoginStaffUser(name, "0", 0.0, email, password, "0")
+        return LoginStaffUser(name, "0", 0.0, email, password, "0", "0")
 
 
     }

@@ -30,7 +30,7 @@
     <string name="save">save</string>
     <string name="created_at">Created At</string>
     <string name="edit">edit</string>
-    <string name="total_salary">Total Salary</string>
+    <string name="total_salary">Total Amount</string>
     <string name="logstaff">LoginStaff</string>
     <string name="register">Register</string>
     <string name="submit">Submit</string>

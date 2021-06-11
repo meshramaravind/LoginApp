@@ -157,7 +157,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         val email = it.ed_email_login.text.toString()
         val password = it.ed_password_login.text.toString()
 
-        return LoginStaffUser("0", "0", 0.0, email, password, "0")
+        return LoginStaffUser("0", "0", 0.0, email, password, "0", "0")
 
     }
 

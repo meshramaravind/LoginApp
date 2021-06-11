@@ -21,5 +21,6 @@ class LoginStaffRepository @Inject constructor(private val db: LoginAppDatabadse
         loginStaffUser
     )
 
-    fun getAllLlginstaff()=db.getLoginDao().getAllStaff()
+    //all get data
+    fun getAllLlginstaff() = db.getLoginDao().getAllStaff()
 }

@@ -46,9 +46,9 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
 
     private fun onTotalStaffSalaryLoaded(loginStaffUser: List<LoginStaffUser>) = with(binding) {
 
-        val totalQuantity: Double = loginStaffUser.map { it.salary }.sum()
+        val totalAmount: Double = loginStaffUser.map { it.salary }.sum()
 
-        tv_total_balance.text = indianRupee(totalQuantity)
+        tv_total_balance.text = indianRupee(totalAmount)
     }
 
     private fun swipeToDelete() {
@@ -73,6 +73,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
                     userdata.name,
                     userdata.designationType,
                     userdata.salary,
+                    "0",
                     "0",
                     "0",
                     "0",
@@ -108,11 +109,11 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
             setHasFixedSize(true)
             adapter = customStaffAdapter
 
-            viewModel.getAllloginstaff().observe(viewLifecycleOwner, { login ->
-                customStaffAdapter.differ.submitList(login)
-                updateUI(login)
+            viewModel.getAllloginstaff().observe(viewLifecycleOwner, { loginstaffuser ->
+                customStaffAdapter.differ.submitList(loginstaffuser)
+                updateUI(loginstaffuser)
 
-                onTotalStaffSalaryLoaded(login)
+                onTotalStaffSalaryLoaded(loginstaffuser)
 
             })
         }
@@ -123,9 +124,13 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
         if (login.isNotEmpty()) {
             emptyStateLayout.hide()
             rv_staffdashboard.show()
+            layout_total_balance_view.show()
+
         } else {
             emptyStateLayout.show()
             rv_staffdashboard.hide()
+            layout_total_balance_view.hide()
+
         }
 
     }

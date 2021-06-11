@@ -58,16 +58,5 @@ class LoginViewModel @Inject constructor(
     //get all note
     fun getAllloginstaff() = loginStaffRepository.getAllLlginstaff()
 
-//    fun getAllLogin() = viewModelScope.launch {
-//        loginStaffRepository.getAllLlginstaff().collect { result ->
-//
-//            if (result.isNullOrEmpty()) {
-//                _uiState.value = ViewState.Empty
-//            } else {
-//                _uiState.value = ViewState.Success(result)
-//            }
-//        }
-//    }
-
 
 }

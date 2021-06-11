@@ -73,6 +73,17 @@ class MainActivity : AppCompatActivity() {
                     binding.tvToolbarTitle.hide()
                 }
 
+                R.id.detailsStaffFragment -> {
+                    supportActionBar!!.setDisplayShowTitleEnabled(true)
+                    binding.tvToolbarTitle.hide()
+                }
+
+                R.id.editStaffFragment -> {
+                    supportActionBar!!.setDisplayShowTitleEnabled(true)
+                    binding.tvToolbarTitle.hide()
+                }
+
+
                 else -> {
                     supportActionBar!!.setDisplayShowTitleEnabled(true)
                 }

@@ -76,18 +76,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
-        <action
-            android:id="@+id/action_registerStaffFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/registerStaffFragment"
-            app:popUpToInclusive="true" />
-
     </fragment>
-
 
     <fragment
         android:id="@+id/forgotpasswordStaffFragment"
@@ -155,7 +144,7 @@
         android:label="Details"
         tools:layout="@layout/fragment_staff_details">
         <argument
-            android:name="staff"
+            android:name="loginstaffuser"
             app:argType="com.arvind.loginroomapp.model.LoginStaffUser" />
         <action
             android:id="@+id/action_staffDetailsFragment_to_editStaffFragment"
@@ -172,7 +161,7 @@
         android:label="Edit"
         tools:layout="@layout/fragment_edit_staff">
         <argument
-            android:name="staff"
+            android:name="loginstaffuser"
             app:argType="com.arvind.loginroomapp.model.LoginStaffUser" />
         <action
             android:id="@+id/edit_to_details"

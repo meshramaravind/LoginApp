@@ -89,7 +89,6 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
         }
 
         return true
-
     }
 
     private fun validateUserdesignationType(): Boolean {
@@ -106,9 +105,7 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
         }
 
         return true
-
     }
-
 
     private fun validateUserName(): Boolean {
         if (ed_name_add.text.toString().isEmpty()) {
@@ -123,7 +120,6 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
         }
 
         return true
-
     }
 
     private val nameTextWatcher: TextWatcher = object : TextWatcher {
@@ -160,8 +156,9 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
         val name = it.ed_name_add.text.toString()
         val desigantionType = it.et_deignationType.text.toString()
         val salary = parseDouble(it.ed_salary_add.text.toString())
+        val date = it.tvDate_salaryadd.text.toString().trim()
 
-        return LoginStaffUser(name, desigantionType, salary, "0", "0", "0")
+        return LoginStaffUser(name, desigantionType, salary, "0", "0", "0", date)
 
     }
 

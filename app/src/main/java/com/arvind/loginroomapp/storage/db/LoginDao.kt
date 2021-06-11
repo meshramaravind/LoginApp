@@ -15,11 +15,11 @@ interface LoginDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateStaff(loginStaffUser: LoginStaffUser)
 
-    // used to delete transaction
+    // used to delete staff
     @Delete
     suspend fun deleteStaff(loginStaffUser: LoginStaffUser)
 
-    // get all saved transaction list
-    @Query("SELECT * FROM all_loginroom ORDER by createdAt DESC")
+    // get all saved staff list
+    @Query("SELECT * FROM all_loginroom ORDER by id DESC")
     fun getAllStaff(): LiveData<List<LoginStaffUser>>
 }

@@ -155,7 +155,7 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding, Login
         val password = it.ed_password_changepassword.text.toString()
         val confirmpassword = it.ed_confirmpassword_changepassword.text.toString()
 
-        return LoginStaffUser("0", "0", 0.0, "0", password, confirmpassword)
+        return LoginStaffUser("0", "0", 0.0, "0", password, confirmpassword, "0")
 
     }
 

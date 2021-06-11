@@ -2,12 +2,14 @@ package com.arvind.loginroomapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arvind.loginroomapp.databinding.ItemsStaffBinding
 import com.arvind.loginroomapp.model.LoginStaffUser
 import com.arvind.loginroomapp.utils.indianRupee
+import com.arvind.loginroomapp.view.dashboard.DashboardFragmentDirections
 
 class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StaffViewHolder {
@@ -32,6 +34,12 @@ class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHold
                 itemsStaffBinding.executePendingBindings()
 
                 tvAmount.text = "- ".plus(indianRupee(loginStaffUser.salary))
+
+                root.setOnClickListener { v ->
+                    val direction = DashboardFragmentDirections
+                        .actionDashboardFragmentToDetailsStaffFragment(loginStaffUser)
+                    v.findNavController().navigate(direction)
+                }
             }
         }
 

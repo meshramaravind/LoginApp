@@ -22,6 +22,8 @@ data class LoginStaffUser(
     var password: String,
     @ColumnInfo(name = "confirmpassword")
     var confirmpassword: String,
+    @ColumnInfo(name = "date")
+    var date: String,
     @ColumnInfo(name = "createdAt")
     var createdAt: Long = System.currentTimeMillis(),
     @PrimaryKey(autoGenerate = true)

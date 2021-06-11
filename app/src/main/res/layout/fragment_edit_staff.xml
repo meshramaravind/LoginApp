@@ -10,14 +10,14 @@
         tools:context=".view.edit.StaffEditFragment">
 
         <include
-            android:id="@+id/editStaffLayout"
+            android:id="@+id/editstafflayout"
             layout="@layout/content_add_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_submit_add"
+            android:id="@+id/button_submit_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"

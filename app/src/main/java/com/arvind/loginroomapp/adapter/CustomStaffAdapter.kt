@@ -33,7 +33,7 @@ class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHold
                 itemsStaffBinding.loginstaff = loginStaffUser
                 itemsStaffBinding.executePendingBindings()
 
-                tvAmount.text = "- ".plus(indianRupee(loginStaffUser.salary))
+                tvAmount.text = "+ ".plus(indianRupee(loginStaffUser.salary))
 
                 root.setOnClickListener { v ->
                     val direction = DashboardFragmentDirections

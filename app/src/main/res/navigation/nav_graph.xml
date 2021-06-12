@@ -8,9 +8,8 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.arvind.loginroomapp.view.dashboard.DashboardFragment"
-        android:label="fragment_dashboard"
+        android:label="dashboard"
         tools:layout="@layout/fragment_dashboard">
-
 
         <action
             android:id="@+id/action_dashboardFragment_to_addStaffFragment"
@@ -55,10 +54,8 @@
         <action
             android:id="@+id/action_loginSatffFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:launchSingleTop="true"
+            app:popUpTo="@id/loginStaffFragment" />
 
     </fragment>
 
@@ -143,6 +140,7 @@
         android:name="com.arvind.loginroomapp.view.details.DetailsFragment"
         android:label="Details"
         tools:layout="@layout/fragment_staff_details">
+
         <argument
             android:name="loginstaffuser"
             app:argType="com.arvind.loginroomapp.model.LoginStaffUser" />

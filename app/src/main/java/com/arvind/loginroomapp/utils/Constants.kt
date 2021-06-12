@@ -15,6 +15,7 @@ object Constants {
         "Python Developer",
         "Node JS Developer",
         "React JS Developer",
+        "Software Tester",
         "UI/UX Designer"
     )
 }

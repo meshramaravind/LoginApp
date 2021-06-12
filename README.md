@@ -10,9 +10,9 @@ Material Components, Room DB, Dark Theme & Light Theme)
 
 # Day Mode 🌞
 
-<img src="https://user-images.githubusercontent.com/25154589/121390017-98ab1f80-c96a-11eb-8f3c-d04bede50e38.png" width="200" + <img src="https://user-images.githubusercontent.com/25154589/121390059-a1035a80-c96a-11eb-85dd-ff0e03bd8c22.png" width="200">
+<img src="https://user-images.githubusercontent.com/25154589/121390017-98ab1f80-c96a-11eb-8f3c-d04bede50e38.png" width="200">
 
-
+<img src="https://user-images.githubusercontent.com/25154589/121390059-a1035a80-c96a-11eb-85dd-ff0e03bd8c22.png" width="200">
 
 <img src="https://user-images.githubusercontent.com/25154589/121390088-a95b9580-c96a-11eb-9b09-e2fa3a53d299.png" width="200">
 

@@ -7,24 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentForgotPasswordBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.storage.db.LoginDao
 import com.arvind.loginroomapp.view.base.BaseFragment
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_forgot_password.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, LoginViewModel>() {
 
     override val viewModel: LoginViewModel by activityViewModels()
+    lateinit var strEmail: String
+    private var loginDao: LoginDao? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,13 +34,23 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Login
     private fun doinits() = with(binding) {
         gettextwathcerForgPassword()
         buttonContinueForgtpassword.setOnClickListener {
-
+            strEmail = edEmailForgotpassword.text.toString().trim()
             if (!validateUserEmail()) {
                 return@setOnClickListener
             } else {
-                val direction =
-                    ForgotPasswordFragmentDirections.actionForgotpasswordStaffFragmentToChangepasswordStaffFragment()
-                it.findNavController().navigate(direction)
+                val exists = loginDao?.getLoginFindByEmail(strEmail)
+                if (exists!!) {
+                    viewModel.getAllLoginEmail(strEmail).run {
+                        findNavController().navigate(
+                            R.id.action_forgotpasswordStaffFragment_to_changepasswordStaffFragment
+                        )
+                    }
+
+                } else {
+                    toast(getString(R.string.errormessage))
+                }
+
+
             }
 
         }
@@ -66,13 +76,13 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Login
 
     private fun isValidEmailaddress(email: String): Boolean {
 
-        val pattern: Pattern
-        val matcher: Matcher
-        val EMAIL_PATTERN =
-            "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-        pattern = Pattern.compile(EMAIL_PATTERN)
-        matcher = pattern.matcher(email)
-        return matcher.matches()
+        val emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$"
+
+        val pat = Pattern.compile(emailRegex)
+        return pat.matcher(email).matches()
 
     }
 

@@ -39,11 +39,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
             if (!validateUserName() or !validateUserEmail() or !validateUserPassword()) {
                 return@setOnClickListener
             } else {
-                viewModel.insertstaff(getRegisterContent()).run {
-                    toast(getString(R.string.success_addstaff_saved))
-                    findNavController().navigate(
-                        R.id.action_loginSatffFragment_to_dashboardFragment
-                    )
+                viewModel.insertlogin(getRegisterContent()).run {
+                    toast(getString(R.string.success_register))
+                    findNavController().popBackStack()
                 }
             }
         }
@@ -57,7 +55,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
     private fun validateUserPassword(): Boolean {
 
         if (ed_password_register.text.toString()
-                .isEmpty() or isValidPassword(ed_password_register.text.toString())
+                .isEmpty() or !isValidPassword(ed_password_register.text.toString())
         ) {
             tverror_password_register.error = tverror_password_register.error
             tverror_password_register.visibility = View.VISIBLE
@@ -81,12 +79,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
                 + "(?=\\S+$).{8,20}$")
 
         val p = Pattern.compile(regex)
-        if (password == null) {
-            return false
-        }
         val m = p.matcher(password)
         return m.matches()
-
     }
 
     private fun validateUserEmail(): Boolean {
@@ -109,15 +103,13 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
     }
 
     private fun isValidEmailaddress(email: String): Boolean {
+        val emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$"
 
-        val pattern: Pattern
-        val matcher: Matcher
-        val EMAIL_PATTERN =
-            "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-        pattern = Pattern.compile(EMAIL_PATTERN)
-        matcher = pattern.matcher(email)
-        return matcher.matches()
-
+        val pat = Pattern.compile(emailRegex)
+        return pat.matcher(email).matches()
     }
 
     private fun validateUserName(): Boolean {
@@ -173,7 +165,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
         }
     }
 
-    private fun getRegisterContent(): LoginStaffUser = binding.buttonRegisterView.let {
+    private fun getRegisterContent(): LoginStaffUser = binding.mainlayoutRegister.let {
         val name = it.ed_name_register.text.toString()
         val email = it.ed_email_register.text.toString()
         val password = it.ed_password_register.text.toString()

@@ -55,7 +55,7 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding, Login
     private fun validateUserConfirmPassword(): Boolean {
 
         if (ed_confirmpassword_changepassword.text.toString()
-                .isEmpty() or isValidConfimrPassword(ed_confirmpassword_changepassword.text.toString())
+                .isEmpty() or !isValidConfimrPassword(ed_confirmpassword_changepassword.text.toString())
         ) {
             tverror_confirmpassword_changepassword.error =
                 tverror_confirmpassword_changepassword.error
@@ -73,27 +73,21 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding, Login
     }
 
     private fun isValidConfimrPassword(password: String): Boolean {
-        val confimrpassword = ed_confirmpassword_changepassword.text.toString()
-
         val regex = ("^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=.*[@#$%^&+=])"
                 + "(?=\\S+$).{8,20}$")
 
         val p = Pattern.compile(regex)
-        if (password == null) {
-            return false
-        }
         val m = p.matcher(password)
         return m.matches()
-
 
     }
 
     private fun validateUserPassword(): Boolean {
 
         if (ed_password_changepassword.text.toString()
-                .isEmpty() or isValidPassword(ed_password_changepassword.text.toString())
+                .isEmpty() or !isValidPassword(ed_password_changepassword.text.toString())
         ) {
             tverror_password_changepassword.error = tverror_password_changepassword.error
             tverror_password_changepassword.visibility = View.VISIBLE
@@ -117,9 +111,6 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding, Login
                 + "(?=\\S+$).{8,20}$")
 
         val p = Pattern.compile(regex)
-        if (password == null) {
-            return false
-        }
         val m = p.matcher(password)
         return m.matches()
 

@@ -37,7 +37,7 @@ class StaffEditFragment : BaseFragment<FragmentEditStaffBinding, LoginViewModel>
 
     }
 
-    private fun getData(loginStaffUser: LoginStaffUser) {
+    private fun getData(loginStaffUser: LoginStaffUser) = with(binding) {
 
         editstafflayout.ed_name_add.setText(loginStaffUser.name)
         editstafflayout.et_deignationType.setText(loginStaffUser.designationType, false)

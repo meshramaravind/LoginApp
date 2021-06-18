@@ -1,6 +1,5 @@
 package com.arvind.loginroomapp.view.login
 
-import android.R.attr.password
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -27,7 +26,8 @@ import java.util.regex.Pattern
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     override val viewModel: LoginViewModel by activityViewModels()
-
+    lateinit var strEmail: String
+    lateinit var strPassword: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,12 +37,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     private fun doinits() = with(binding) {
         gettextwathcerlogin()
         buttonLogin.setOnClickListener {
+            strEmail = edEmailLogin.text.toString().trim()
+            strPassword = edPasswordLogin.text.toString().trim()
             if (!validateUserEmail() or !validateUserPassword()) {
                 return@setOnClickListener
             } else {
-                val direction =
-                    LoginFragmentDirections.actionLoginSatffFragmentToDashboardFragment()
-                it.findNavController().navigate(direction)
+                viewModel.getAllLogin(strEmail, strPassword).run {
+                    toast(getString(R.string.success_login))
+                    findNavController().navigate(
+                        R.id.action_loginSatffFragment_to_dashboardFragment
+                    )
+                }
+
+
             }
 
         }
@@ -64,7 +71,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     private fun validateUserPassword(): Boolean {
 
         if (ed_password_login.text.toString()
-                .isEmpty() or isValidPassword(ed_password_login.text.toString())
+                .isEmpty() or !isValidPassword(ed_password_login.text.toString())
         ) {
             tverror_password_viewlogin.error = tverror_password_viewlogin.error
             tverror_password_viewlogin.visibility = View.VISIBLE
@@ -81,16 +88,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     }
 
     private fun isValidPassword(password: String): Boolean {
-
         val regex = ("^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=.*[@#$%^&+=])"
                 + "(?=\\S+$).{8,20}$")
 
         val p = Pattern.compile(regex)
-        if (password == null) {
-            return false
-        }
         val m = p.matcher(password)
         return m.matches()
 
@@ -117,13 +120,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
     private fun isValidEmailaddress(email: String): Boolean {
 
-        val pattern: Pattern
-        val matcher: Matcher
-        val EMAIL_PATTERN =
-            "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-        pattern = Pattern.compile(EMAIL_PATTERN)
-        matcher = pattern.matcher(email)
-        return matcher.matches()
+        val emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$"
+
+        val pat = Pattern.compile(emailRegex)
+        return pat.matcher(email).matches()
 
     }
 
@@ -153,7 +156,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         }
     }
 
-    private fun getLoginContent(): LoginStaffUser = binding.buttonLogin.let {
+    private fun getLoginContent(): LoginStaffUser = binding.mainlayoutLogin.let {
         val email = it.ed_email_login.text.toString()
         val password = it.ed_password_login.text.toString()
 

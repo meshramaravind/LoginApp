@@ -111,7 +111,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
 
             viewModel.getAllloginstaff().observe(viewLifecycleOwner, { loginstaffuser ->
                 customStaffAdapter.differ.submitList(loginstaffuser)
-                updateUI(loginstaffuser)
+               getUI(loginstaffuser)
 
                 onTotalStaffSalaryLoaded(loginstaffuser)
 
@@ -119,7 +119,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
         }
     }
 
-    private fun updateUI(login: List<LoginStaffUser>) {
+    private fun getUI(login: List<LoginStaffUser>) {
 
         if (login.isNotEmpty()) {
             emptyStateLayout.hide()

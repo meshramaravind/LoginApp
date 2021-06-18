@@ -19,8 +19,9 @@
         android:layout_marginEnd="@dimen/_8sdp"
         app:cardBackgroundColor="@color/colorcardview"
         app:cardCornerRadius="@dimen/_5sdp"
-        app:cardElevation="@dimen/_8sdp"
-        app:cardPreventCornerOverlap="false">
+        app:cardElevation="@dimen/_2sdp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoginStaffApp</string>
+    <string name="app_name">LoginApp</string>
     <string name="add">New Add</string>
     <string name="no_data_found">No Data Found…!</string>
     <string name="search">Search…</string>
@@ -42,6 +42,9 @@
     <string name="success_addstaff_saved">Staff saved successfully</string>
     <string name="success_addstaff_delete">Staff deleted successfully!</string>
     <string name="success_addstaff_update">Staff update successfully!</string>
+    <string name="success_login">Login successfully!</string>
+    <string name="success_register">Register successfully!</string>
+    <string name="errormessage">Unauthorized user</string>
     <string name="text_rupees">₹</string>
     <string name="name_is_required">Name is required</string>
     <string name="confirm_password_is_required">Confirm Password is required</string>

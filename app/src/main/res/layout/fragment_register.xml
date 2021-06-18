@@ -9,6 +9,7 @@
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainlayout_register"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorbackground"
@@ -160,6 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_110sdp"
                 android:clickable="true"
@@ -168,7 +170,6 @@
                 android:padding="@dimen/_9sdp"
                 android:text="@string/register"
                 android:textSize="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_30sdp"
                 app:backgroundTint="@color/colorbgpslah"
                 app:cornerRadius="@dimen/_3sdp"
                 app:layout_constraintEnd_toEndOf="parent"

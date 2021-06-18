@@ -17,18 +17,14 @@
         <activity
             android:name=".view.main.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.LoginRoomApp.NoActionBar" />
-
-        <activity
-            android:name=".view.splash.SplashActivity"
-            android:configChanges="uiMode|orientation"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/Theme.LoginRoomApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

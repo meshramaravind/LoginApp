@@ -11,6 +11,11 @@ class LoginStaffRepository @Inject constructor(private val db: LoginAppDatabadse
         loginStaffUser
     )
 
+    // insert login staff
+    suspend fun insertlogin(loginStaffUser: LoginStaffUser) = db.getLoginDao().insertloginStaff(
+        loginStaffUser
+    )
+
     // update login
     suspend fun update(loginStaffUser: LoginStaffUser) = db.getLoginDao().updateStaff(
         loginStaffUser
@@ -21,6 +26,16 @@ class LoginStaffRepository @Inject constructor(private val db: LoginAppDatabadse
         loginStaffUser
     )
 
+    // get login staff details by ID
+    fun getByID(id: Int) = db.getLoginDao().getLoginStaffByID(id)
+
     //all get data
     fun getAllLlginstaff() = db.getLoginDao().getAllStaff()
+
+    //get login
+    fun getLogin(email: String, password: String) = db.getLoginDao().getLoginStaff(email, password)
+
+    //get email
+    fun getLoginEmail(email: String) = db.getLoginDao().getLoginFindByEmail(email)
+
 }

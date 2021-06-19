@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arvind.loginroomapp.databinding.ItemsStaffBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.utils.indianRupee
 import com.arvind.loginroomapp.view.dashboard.DashboardFragmentDirections
 
@@ -28,16 +28,16 @@ class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHold
 
     inner class StaffViewHolder(private val itemsStaffBinding: ItemsStaffBinding) :
         RecyclerView.ViewHolder(itemsStaffBinding.root) {
-        fun bind(loginStaffUser: LoginStaffUser) {
+        fun bind(loginUser: LoginUser) {
             itemsStaffBinding.apply {
-                itemsStaffBinding.loginstaff = loginStaffUser
+                itemsStaffBinding.loginstaff = loginUser
                 itemsStaffBinding.executePendingBindings()
 
-                tvAmount.text = "+ ".plus(indianRupee(loginStaffUser.salary))
+                tvAmount.text = "+ ".plus(indianRupee(loginUser.salary))
 
                 root.setOnClickListener { v ->
                     val direction = DashboardFragmentDirections
-                        .actionDashboardFragmentToDetailsStaffFragment(loginStaffUser)
+                        .actionDashboardFragmentToDetailsStaffFragment(loginUser)
                     v.findNavController().navigate(direction)
                 }
             }
@@ -46,10 +46,10 @@ class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHold
     }
 
     private val differCallback =
-        object : DiffUtil.ItemCallback<LoginStaffUser>() {
+        object : DiffUtil.ItemCallback<LoginUser>() {
             override fun areItemsTheSame(
-                oldItem: LoginStaffUser,
-                newItem: LoginStaffUser
+                oldItem: LoginUser,
+                newItem: LoginUser
             ): Boolean {
                 return oldItem.id == newItem.id &&
                         oldItem.name == newItem.name &&
@@ -58,8 +58,8 @@ class CustomStaffAdapter : RecyclerView.Adapter<CustomStaffAdapter.StaffViewHold
             }
 
             override fun areContentsTheSame(
-                oldItem: LoginStaffUser,
-                newItem: LoginStaffUser
+                oldItem: LoginUser,
+                newItem: LoginUser
             ): Boolean {
                 return oldItem == newItem
             }

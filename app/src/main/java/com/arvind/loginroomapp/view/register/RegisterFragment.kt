@@ -7,27 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentRegisterBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
+import com.arvind.loginroomapp.repository.LoginStaffRepository
+import com.arvind.loginroomapp.storage.db.LoginDao
 import com.arvind.loginroomapp.view.base.BaseFragment
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_login.ed_email_login
-import kotlinx.android.synthetic.main.fragment_login.ed_password_login
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>() {
     override val viewModel: LoginViewModel by activityViewModels()
-
+    private var loginStaffRepository: LoginStaffRepository? = null
+    lateinit var strEmail: String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         doinits()
@@ -36,13 +35,20 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
     private fun doinits() = with(binding) {
         gettextwathcerregister()
         buttonRegisterView.setOnClickListener {
+            strEmail = edEmailRegister.text.toString().trim()
             if (!validateUserName() or !validateUserEmail() or !validateUserPassword()) {
                 return@setOnClickListener
             } else {
-                viewModel.insertlogin(getRegisterContent()).run {
-                    toast(getString(R.string.success_register))
-                    findNavController().popBackStack()
+                if (loginStaffRepository?.getLoginEmail(strEmail) == true) {
+                    viewModel.insertlogin(getRegisterContent()).run {
+                        toast(getString(R.string.success_register))
+                        findNavController().popBackStack()
+                    }
+                } else {
+                    toast(getString(R.string.error_email_exists))
                 }
+
+
             }
         }
 
@@ -165,12 +171,12 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, LoginViewModel>()
         }
     }
 
-    private fun getRegisterContent(): LoginStaffUser = binding.mainlayoutRegister.let {
+    private fun getRegisterContent(): LoginUser = binding.mainlayoutRegister.let {
         val name = it.ed_name_register.text.toString()
         val email = it.ed_email_register.text.toString()
         val password = it.ed_password_register.text.toString()
 
-        return LoginStaffUser(name, "0", 0.0, email, password, "0", "0")
+        return LoginUser(name, "0", 0.0, email, password, "0", "0")
 
 
     }

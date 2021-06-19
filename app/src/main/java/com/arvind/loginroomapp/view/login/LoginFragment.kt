@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentLoginBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.view.base.BaseFragment
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +20,6 @@ import kotlinx.android.synthetic.main.content_add_layout.*
 import kotlinx.android.synthetic.main.content_add_layout.view.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
@@ -48,7 +48,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
                         R.id.action_loginSatffFragment_to_dashboardFragment
                     )
                 }
-
 
             }
 
@@ -156,11 +155,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         }
     }
 
-    private fun getLoginContent(): LoginStaffUser = binding.mainlayoutLogin.let {
+    private fun getLoginContent(): LoginUser = binding.mainlayoutLogin.let {
         val email = it.ed_email_login.text.toString()
         val password = it.ed_password_login.text.toString()
 
-        return LoginStaffUser("0", "0", 0.0, email, password, "0", "0")
+        return LoginUser("0", "0", 0.0, email, password, "0", "0")
 
     }
 

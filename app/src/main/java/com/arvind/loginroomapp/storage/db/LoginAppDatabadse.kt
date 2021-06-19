@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 
 @Database(
-    entities = [LoginStaffUser::class], version = 1,
+    entities = [LoginUser::class], version = 1,
     exportSchema = false
 )
 abstract class LoginAppDatabadse : RoomDatabase() {

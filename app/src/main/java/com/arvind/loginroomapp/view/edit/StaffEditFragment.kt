@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentEditStaffBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.utils.Constants
 import com.arvind.loginroomapp.utils.parseDouble
 import com.arvind.loginroomapp.view.base.BaseFragment
@@ -27,22 +27,22 @@ import kotlinx.android.synthetic.main.fragment_edit_staff.*
 class StaffEditFragment : BaseFragment<FragmentEditStaffBinding, LoginViewModel>() {
     private val args: StaffEditFragmentArgs by navArgs()
     override val viewModel: LoginViewModel by activityViewModels()
-    private lateinit var loginStaffUser: LoginStaffUser
+    private lateinit var loginUser: LoginUser
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginStaffUser = args.loginstaffuser
+        loginUser = args.loginstaffuser
         doinits()
-        getData(loginStaffUser)
+        getData(loginUser)
 
     }
 
-    private fun getData(loginStaffUser: LoginStaffUser) = with(binding) {
+    private fun getData(loginUser: LoginUser) = with(binding) {
 
-        editstafflayout.ed_name_add.setText(loginStaffUser.name)
-        editstafflayout.et_deignationType.setText(loginStaffUser.designationType, false)
-        editstafflayout.ed_salary_add.setText(loginStaffUser.salary.toString())
-        editstafflayout.tvDate_salaryadd.text = loginStaffUser.createdAtDateFormat
+        editstafflayout.ed_name_add.setText(loginUser.name)
+        editstafflayout.et_deignationType.setText(loginUser.designationType, false)
+        editstafflayout.ed_salary_add.setText(loginUser.salary.toString())
+        editstafflayout.tvDate_salaryadd.text = loginUser.createdAtDateFormat
 
     }
 
@@ -164,7 +164,7 @@ class StaffEditFragment : BaseFragment<FragmentEditStaffBinding, LoginViewModel>
         }
     }
 
-    private fun getStaffContent(): LoginStaffUser = binding.editstafflayout.let {
+    private fun getStaffContent(): LoginUser = binding.editstafflayout.let {
 
         val id = args.loginstaffuser.id
         val name = it.ed_name_add.text.toString()
@@ -172,7 +172,7 @@ class StaffEditFragment : BaseFragment<FragmentEditStaffBinding, LoginViewModel>
         val salary = parseDouble(it.ed_salary_add.text.toString())
         val date = it.tvDate_salaryadd.text.toString().trim()
 
-        return LoginStaffUser(
+        return LoginUser(
             name = name,
             designationType = desigantionType,
             salary = salary,

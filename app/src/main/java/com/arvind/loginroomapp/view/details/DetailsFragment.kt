@@ -9,9 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentStaffDetailsBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.utils.DetailState
 import com.arvind.loginroomapp.utils.cleanTextContent
 import com.arvind.loginroomapp.utils.indianRupee
@@ -26,18 +25,18 @@ import kotlinx.coroutines.flow.collect
 class DetailsFragment : BaseFragment<FragmentStaffDetailsBinding, LoginViewModel>() {
     private val args: DetailsFragmentArgs by navArgs()
     override val viewModel: LoginViewModel by activityViewModels()
-    private lateinit var loginStaffUser: LoginStaffUser
+    private lateinit var loginUser: LoginUser
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginStaffUser = args.loginstaffuser
+        loginUser = args.loginstaffuser
         getdetailsstaff()
-        getLoginStaffdetails(loginStaffUser.id)
+        getLoginStaffdetails(loginUser.id)
 
         binding.buttonStaffedit.setOnClickListener {
             val direction =
                 DetailsFragmentDirections.actionStaffDetailsFragmentToEditStaffFragment(
-                    loginStaffUser
+                    loginUser
                 )
             it.findNavController().navigate(direction)
         }
@@ -55,7 +54,7 @@ class DetailsFragment : BaseFragment<FragmentStaffDetailsBinding, LoginViewModel
                 DetailState.Loading -> {
                 }
                 is DetailState.Success -> {
-                    onDetailsLoaded(detailState.loginStaffUser)
+                    onDetailsLoaded(detailState.loginUser)
                 }
                 is DetailState.Error -> {
                     toast("Error something")
@@ -67,13 +66,13 @@ class DetailsFragment : BaseFragment<FragmentStaffDetailsBinding, LoginViewModel
         }
     }
 
-    private fun onDetailsLoaded(loginStaffUser: LoginStaffUser) = with(binding.layoutStaffDetails) {
+    private fun onDetailsLoaded(loginUser: LoginUser) = with(binding.layoutStaffDetails) {
 
-        tv_name_details.text = loginStaffUser.name
-        tv_designation_details.text = loginStaffUser.designationType
+        tv_name_details.text = loginUser.name
+        tv_designation_details.text = loginUser.designationType
         tv_salary_details.text =
-            indianRupee(loginStaffUser.salary).cleanTextContent
-        tv_createdAt_details.text = loginStaffUser.createdAtDateFormat
+            indianRupee(loginUser.salary).cleanTextContent
+        tv_createdAt_details.text = loginUser.createdAtDateFormat
 
 
     }

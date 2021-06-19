@@ -7,7 +7,7 @@
 
         <variable
             name="loginstaff"
-            type="com.arvind.loginroomapp.model.LoginStaffUser" />
+            type="com.arvind.loginroomapp.model.LoginUser" />
     </data>
 
     <androidx.cardview.widget.CardView

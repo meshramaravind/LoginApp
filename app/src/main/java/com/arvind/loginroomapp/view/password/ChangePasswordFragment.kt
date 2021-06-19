@@ -8,10 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentChangePasswordBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.view.base.BaseFragment
 import com.arvind.loginroomapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +33,6 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding, Login
         gettextwathcerchangepassword()
 
         buttonSubmitChangepassword.setOnClickListener {
-
             if (!validateUserPassword() or !validateUserConfirmPassword()) {
                 return@setOnClickListener
             } else {
@@ -139,14 +136,35 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding, Login
 
         override fun afterTextChanged(s: Editable) {
             validateUserConfirmPassword()
+
         }
     }
 
-    private fun geChangePasswordContent(): LoginStaffUser = binding.buttonSubmitChangepassword.let {
+    private fun validateUserConfirmPasswordmatchhh(): Boolean {
+        if (ed_confirmpassword_changepassword.text.toString()
+                .isEmpty() or !isValidConfimrPassword(ed_confirmpassword_changepassword.text.toString())
+        ) {
+            tverror_confirmpassword_changepassword.text = "password dose not macth"
+            tverror_confirmpassword_changepassword.error =
+                tverror_confirmpassword_changepassword.error
+            tverror_confirmpassword_changepassword.visibility = View.VISIBLE
+
+            return false
+        } else {
+            tverror_confirmpassword_changepassword.isEnabled = false
+            tverror_confirmpassword_changepassword.visibility = View.GONE
+            tverror_confirmpassword_changepassword.error = null
+        }
+
+        return true
+
+    }
+
+    private fun geChangePasswordContent(): LoginUser = binding.buttonSubmitChangepassword.let {
         val password = it.ed_password_changepassword.text.toString()
         val confirmpassword = it.ed_confirmpassword_changepassword.text.toString()
 
-        return LoginStaffUser("0", "0", 0.0, "0", password, confirmpassword, "0")
+        return LoginUser("0", "0", 0.0, "0", password, confirmpassword, "0")
 
     }
 

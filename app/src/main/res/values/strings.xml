@@ -45,7 +45,11 @@
     <string name="success_login">Login successfully!</string>
     <string name="success_register">Register successfully!</string>
     <string name="errormessage">Unauthorized user</string>
+    <string name="userroremail">User doesn\'t exist,please Register!</string>
+    <string name="errorlogin">Login Failed, please try again</string>
+    <string name="error_email_exists">Email Already Exists</string>
     <string name="text_rupees">₹</string>
     <string name="name_is_required">Name is required</string>
     <string name="confirm_password_is_required">Confirm Password is required</string>
+
 </resources>

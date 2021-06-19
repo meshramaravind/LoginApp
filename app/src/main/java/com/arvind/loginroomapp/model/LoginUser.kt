@@ -9,7 +9,7 @@ import java.text.DateFormat
 
 @Entity(tableName = "all_loginroom")
 @Parcelize
-data class LoginStaffUser(
+data class LoginUser(
     @ColumnInfo(name = "name")
     var name: String,
     @ColumnInfo(name = "designationType")

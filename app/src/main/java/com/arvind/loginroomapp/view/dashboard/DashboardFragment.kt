@@ -1,7 +1,6 @@
 package com.arvind.loginroomapp.view.dashboard
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.widget.NestedScrollView
@@ -13,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.adapter.CustomStaffAdapter
 import com.arvind.loginroomapp.databinding.FragmentDashboardBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
-import com.arvind.loginroomapp.utils.ViewState
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.utils.hide
 import com.arvind.loginroomapp.utils.indianRupee
 import com.arvind.loginroomapp.utils.show
@@ -24,7 +22,6 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.layout_total_staff.*
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint
@@ -44,9 +41,9 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
         swipeToDelete()
     }
 
-    private fun onTotalStaffSalaryLoaded(loginStaffUser: List<LoginStaffUser>) = with(binding) {
+    private fun onTotalStaffSalaryLoaded(loginUser: List<LoginUser>) = with(binding) {
 
-        val totalAmount: Double = loginStaffUser.map { it.salary }.sum()
+        val totalAmount: Double = loginUser.map { it.salary }.sum()
 
         tv_total_balance.text = indianRupee(totalAmount)
     }
@@ -69,7 +66,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
                 // get item position & delete notes
                 val position = viewHolder.adapterPosition
                 val userdata = customStaffAdapter.differ.currentList[position]
-                val loginstaffItem = LoginStaffUser(
+                val loginstaffItem = LoginUser(
                     userdata.name,
                     userdata.designationType,
                     userdata.salary,
@@ -119,7 +116,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, LoginViewModel>
         }
     }
 
-    private fun getUI(login: List<LoginStaffUser>) {
+    private fun getUI(login: List<LoginUser>) {
 
         if (login.isNotEmpty()) {
             emptyStateLayout.hide()

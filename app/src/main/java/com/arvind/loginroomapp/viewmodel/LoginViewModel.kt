@@ -3,7 +3,7 @@ package com.arvind.loginroomapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.repository.LoginStaffRepository
 import com.arvind.loginroomapp.storage.datastore.UIModeDataStore
 import com.arvind.loginroomapp.utils.DetailState
@@ -42,29 +42,29 @@ class LoginViewModel @Inject constructor(
     }
 
     //insert add staff
-    fun insertstaff(loginStaffUser: LoginStaffUser) = viewModelScope.launch {
-        loginStaffRepository.insert(loginStaffUser)
+    fun insertstaff(loginUser: LoginUser) = viewModelScope.launch {
+        loginStaffRepository.insert(loginUser)
     }
 
     //insert login staff
-    fun insertlogin(loginStaffUser: LoginStaffUser) = viewModelScope.launch {
-        loginStaffRepository.insertlogin(loginStaffUser)
+    fun insertlogin(loginUser: LoginUser) = viewModelScope.launch {
+        loginStaffRepository.insertlogin(loginUser)
     }
 
     //update staff
-    fun updateloginstaff(loginStaffUser: LoginStaffUser) = viewModelScope.launch {
-        loginStaffRepository.update(loginStaffUser)
+    fun updateloginstaff(loginUser: LoginUser) = viewModelScope.launch {
+        loginStaffRepository.update(loginUser)
     }
 
     //delete staff
-    fun deleteloginstaff(loginStaffUser: LoginStaffUser) = viewModelScope.launch {
-        loginStaffRepository.delete(loginStaffUser)
+    fun deleteloginstaff(loginUser: LoginUser) = viewModelScope.launch {
+        loginStaffRepository.delete(loginUser)
     }
 
     // get login staff by id
     fun getByID(id: Int) = viewModelScope.launch {
         _detailState.value = DetailState.Loading
-        loginStaffRepository.getByID(id).collect { result: LoginStaffUser? ->
+        loginStaffRepository.getByID(id).collect { result: LoginUser? ->
             if (result != null) {
                 _detailState.value = DetailState.Success(result)
             }

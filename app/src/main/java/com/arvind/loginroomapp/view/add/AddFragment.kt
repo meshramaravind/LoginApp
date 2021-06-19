@@ -1,6 +1,5 @@
 package com.arvind.loginroomapp.view.add
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.arvind.loginroomapp.R
 import com.arvind.loginroomapp.databinding.FragmentAddStaffBinding
-import com.arvind.loginroomapp.model.LoginStaffUser
+import com.arvind.loginroomapp.model.LoginUser
 import com.arvind.loginroomapp.utils.Constants
 import com.arvind.loginroomapp.utils.parseDouble
 import com.arvind.loginroomapp.view.base.BaseFragment
@@ -152,13 +151,13 @@ class AddFragment : BaseFragment<FragmentAddStaffBinding, LoginViewModel>() {
         }
     }
 
-    private fun getStaffContent(): LoginStaffUser = binding.addStaffLayout.let {
+    private fun getStaffContent(): LoginUser = binding.addStaffLayout.let {
         val name = it.ed_name_add.text.toString()
         val desigantionType = it.et_deignationType.text.toString()
         val salary = parseDouble(it.ed_salary_add.text.toString())
         val date = it.tvDate_salaryadd.text.toString().trim()
 
-        return LoginStaffUser(name, desigantionType, salary, "0", "0", "0", date)
+        return LoginUser(name, desigantionType, salary, "0", "0", "0", date)
 
     }
 

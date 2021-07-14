@@ -1,4 +1,4 @@
-# LoginApp
+# Login_Room_Database_App
 Simple login Room Database app with mvvm clean architecture
 
 Here i demonstrate the use of Modern Android development tools - 
